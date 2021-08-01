@@ -5,6 +5,8 @@ Check the challenge on Frontend Mentor:
 
 🚀 [Tip calculator app](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX)
 
+💡 [My Solution](https://www.frontendmentor.io/solutions/vue-js-app-using-scss-48g-ljLEH)
+
 Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
