@@ -112,7 +112,7 @@ export default {
   },
   methods: {
     onTipClick(index) {
-      if (this.activeTip === index) {
+      if (this.activeTip === index || index == this.tips.length - 1) {
         this.activeTip = null;
       } else {
         this.activeTip = index;
@@ -143,7 +143,7 @@ export default {
       var amount;
       if (type == "tip") {
         if (!this.checkInputs()) {
-          var tipPercentage = parseInt(this.tips[this.activeTip], 10);
+          var tipPercentage = parseInt(this.customTip || this.tips[this.activeTip], 10);
           amount =
             ((this.billInput / this.peopleNumber) *
               (this.customTip || tipPercentage)) /
