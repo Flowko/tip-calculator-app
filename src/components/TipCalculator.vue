@@ -150,7 +150,7 @@ export default {
       if(type == 'tip') {
         if(!this.checkInputs()){
           var tipPercentage = parseInt(this.tips[this.activeTip],10);
-          amount = ((this.billInput / this.peopleNumber) * tipPercentage) / 100;
+          amount = ((this.billInput / this.peopleNumber) * (this.customTip || tipPercentage)) / 100;
           this.tipAmount = amount;
         }
         else {
@@ -186,6 +186,13 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 28px 6px #88888824;
+
+  @media (max-width:768px) {
+      width: 100%;
+    border-radius: 30px;
+    position: unset;
+    transform: translate(0);
+  }
 
   .tipContent {
     display: flex;
@@ -291,6 +298,10 @@ export default {
       text-align: center;
       font-weight: 700;
       font-size: 20px;
+
+      @media (max-width:768px) {
+        flex: 40%;
+      }
 
       span {
         width: 100%;
