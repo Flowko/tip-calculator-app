@@ -1,6 +1,7 @@
 <template>
   <div class="tipHolder">
     <!-- svg logo here -->
+    <img src="@/assets/images/logo.svg" class="logo" alt="logo" />
     <div class="tipContent">
       <div class="tipSection">
         <!-- Bill Input -->
@@ -43,10 +44,7 @@
         <!-- Number of People Input -->
         <div class="labelError">
           <label class="label"> Number of People </label>
-          <label
-            v-if="!isValid(peopleNumber)"
-            class="label error"
-          >
+          <label v-if="!isValid(peopleNumber)" class="label error">
             Can't be zero
           </label>
         </div>
@@ -70,32 +68,25 @@
         <div class="tipCalculatorSection">
           <div class="tipAmount">
             <div class="tipText">
-              <span class="tipLabel">
-                Tip Amount
-              </span>
-              <span class="tipLabelSecond">
-                / person
-              </span>
+              <span class="tipLabel"> Tip Amount </span>
+              <span class="tipLabelSecond"> / person </span>
             </div>
-            <span class="tipPrice">
-              ${{calculator('tip')}}
-            </span>
+            <span class="tipPrice"> ${{ calculator("tip") }} </span>
           </div>
           <div class="tipAmount">
             <div class="tipText">
-              <span class="tipLabel">
-                Tip Amount
-              </span>
-              <span class="tipLabelSecond">
-                / person
-              </span>
+              <span class="tipLabel"> Tip Amount </span>
+              <span class="tipLabelSecond"> / person </span>
             </div>
-            <span class="tipPrice">
-              ${{calculator('total')}}
-            </span>
+            <span class="tipPrice"> ${{ calculator("total") }} </span>
           </div>
-          <input type="button" value="Reset" :disabled="checkInputs()" class="resetBtn" @click="reset()">
-            
+          <input
+            type="button"
+            value="Reset"
+            :disabled="checkInputs()"
+            class="resetBtn"
+            @click="reset()"
+          />
         </div>
       </div>
     </div>
@@ -116,7 +107,7 @@ export default {
       peopleNumber: null,
       min: 0,
       max: 100,
-      tipAmount: null
+      tipAmount: null,
     };
   },
   methods: {
@@ -127,47 +118,50 @@ export default {
         this.activeTip = index;
       }
     },
-    isValid(value) {      
-        return (value !== 0);
+    isValid(value) {
+      return value !== 0;
     },
-    reset(){
+    reset() {
       this.activeTip = null;
       this.customTip = null;
       this.billInput = null;
       this.peopleNumber = null;
       this.tipAmount = null;
     },
-    checkInputs(){
-      if((this.activeTip || this.customTip ) && this.billInput && this.peopleNumber){
+    checkInputs() {
+      if (
+        (this.activeTip || this.customTip) &&
+        this.billInput &&
+        this.peopleNumber
+      ) {
         return false;
-      }
-      else {
+      } else {
         return true;
       }
     },
-    calculator(type){
+    calculator(type) {
       var amount;
-      if(type == 'tip') {
-        if(!this.checkInputs()){
-          var tipPercentage = parseInt(this.tips[this.activeTip],10);
-          amount = ((this.billInput / this.peopleNumber) * (this.customTip || tipPercentage)) / 100;
+      if (type == "tip") {
+        if (!this.checkInputs()) {
+          var tipPercentage = parseInt(this.tips[this.activeTip], 10);
+          amount =
+            ((this.billInput / this.peopleNumber) *
+              (this.customTip || tipPercentage)) /
+            100;
           this.tipAmount = amount;
+        } else {
+          amount = "0.00";
         }
-        else {
-          amount = '0.00';
-        }
-      }
-      else {
-        if(!this.checkInputs() && this.tipAmount){
-          amount = (this.billInput / this.peopleNumber) + this.tipAmount ;
-        }
-        else {
-          amount = '0.00';
+      } else {
+        if (!this.checkInputs() && this.tipAmount) {
+          amount = this.billInput / this.peopleNumber + this.tipAmount;
+        } else {
+          amount = "0.00";
         }
       }
 
       amount = amount.toString();
-      amount = amount.slice(0, (amount.indexOf("."))+3)
+      amount = amount.slice(0, amount.indexOf(".") + 3);
 
       return amount;
     },
@@ -177,33 +171,41 @@ export default {
 
 <style scoped lang="scss">
 .tipHolder {
-  background-color: #ffffff;
-  border-radius: 6px;
   width: 60%;
   display: flex;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0px 0px 28px 6px #88888824;
+  flex-direction: column;
 
-  @media (max-width:768px) {
-      width: 100%;
+  .logo {
+    width: 80px;
+    align-self: center;
+    margin: 50px 0 100px 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
     border-radius: 30px;
     position: unset;
     transform: translate(0);
   }
 
   .tipContent {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 28px 6px #88888824;
+    border-radius: 6px;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    // width: 100%;
     padding: 20px;
+    
 
     .tipSection {
-        flex: 1 1 0;
-        padding: 10px;
-        margin: 20px;
+      flex: 1 1 0;
+      padding: 10px;
+      margin: 20px;
     }
   }
 
@@ -299,7 +301,7 @@ export default {
       font-weight: 700;
       font-size: 20px;
 
-      @media (max-width:768px) {
+      @media (max-width: 768px) {
         flex: 40%;
       }
 
@@ -338,13 +340,14 @@ export default {
 
   .tipCalculatorSection {
     height: 100%;
-    background-color: #00474B;
+    background-color: #00474b;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     font-weight: 700;
 
-    .tipAmount,.resetBtn {
+    .tipAmount,
+    .resetBtn {
       margin: 30px;
     }
 
@@ -365,14 +368,12 @@ export default {
         .tipLabelSecond {
           color: hsl(186, 14%, 43%);
         }
-
       }
-      
+
       .tipPrice {
         color: hsl(172, 67%, 45%);
         font-size: 38px;
       }
-
     }
     .resetBtn {
       background-color: #27c1ad;
