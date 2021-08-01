@@ -75,7 +75,7 @@
           </div>
           <div class="tipAmount">
             <div class="tipText">
-              <span class="tipLabel"> Tip Amount </span>
+              <span class="tipLabel"> Total </span>
               <span class="tipLabelSecond"> / person </span>
             </div>
             <span class="tipPrice"> ${{ calculator("total") }} </span>
