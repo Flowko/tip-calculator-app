@@ -3,6 +3,8 @@
 # 📣 The challenge
 Check the challenge on Frontend Mentor:
 
+🎉 [App Link](https://tip-calculator-app-flowko.herokuapp.com/)
+
 🚀 [Tip calculator app](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX)
 
 💡 [My Solution](https://www.frontendmentor.io/solutions/vue-js-app-using-scss-48g-ljLEH)
